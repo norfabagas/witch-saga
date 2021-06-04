@@ -42,12 +42,48 @@ const HomeIndex = () => {
   }
 
   const checkSolution = (name1, age1, death1, name2, age2, death2) => {
-    setSolution('please wait...');
-    fetchSolution(name1, age1, death1, name2, age2, death2)
-      .then(solution => {
-        console.log(solution);
-        setSolution(solution.result);
-      });
+    if (validateInput(name1, age1, death1, name2, age2, death2)) {
+      setSolution('please wait...');
+      fetchSolution(name1, age1, death1, name2, age2, death2)
+        .then(solution => {
+          console.log(solution);
+          setSolution(solution.result);
+        });
+    }
+  }
+
+  const validateInput = (name1, age1, death1, name2, age2, death2) => {
+    if (name1 === "") {
+      setSolution('please fill name of first person');
+      return false;
+    }
+    
+    if (name2 === "") {
+      setSolution('please fill name of second person');
+      return false;
+    }
+    
+    if (age1 === "") {
+      setSolution('please fill age of first person');
+      return false;
+    }
+    
+    if (age2 === "") {
+      setSolution('please fill age of second person');
+      return false;
+    }
+    
+    if (death1 === "") {
+      setSolution('please fill death year of first person');
+      return false;
+    }
+    
+    if (death2 === "") {
+      setSolution('please fill death year of second person');
+      return false;
+    }
+
+    return true;
   }
 
   useEffect(() => {
