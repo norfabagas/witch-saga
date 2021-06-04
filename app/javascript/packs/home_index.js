@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import WelcomeMessage from './welcome_message';
 
 const HomeIndex = () => {
